@@ -33,3 +33,6 @@ const copyToClipboard = (text) => {
         }
     }
 }
+
+/* Tweet statuses */
+const tweetArticles = () => {}
