@@ -34,5 +34,8 @@ const copyToClipboard = (text) => {
     }
 }
 
-/* Tweet statuses */
+/* Multiple tweet statuses */
 const tweetArticles = () => {}
+
+/* Single tweet status */
+const tweetArticle = () => {}
