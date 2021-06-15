@@ -34,7 +34,12 @@ const copyToClipboard = (text) => {
     }
 }
 
-
+/**
+ * Get the siblings of an element
+ * 
+ * @param  {Node}  elem The element
+ * @return {Array}      The siblings
+ */
 const getSiblings = (elem) => {
     let siblings = [];
     let sibling = elem.parentNode.firstChild;
