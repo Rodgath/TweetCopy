@@ -51,6 +51,13 @@ const getSiblings = (elem) => {
     return siblings;
 };
 
+/**
+ * Get the closest matching element up the DOM tree.
+ * 
+ * @param  {Element} elem     Starting element
+ * @param  {String}  selector Selector to match against
+ * @return {Boolean|Element}  Returns null if not match found
+ */
 const getClosest = (elem, selector) => {
 
     /* Element.matches() polyfill */
@@ -70,8 +77,8 @@ const getClosest = (elem, selector) => {
     }
 
    /*  Get closest match */
-    for ( ; elem && elem !== document; elem = elem.parentNode ) {
-        if ( elem.matches( selector ) ) return elem;
+    for (; elem && elem !== document; elem = elem.parentNode) {
+        if (elem.matches(selector)) return elem;
     }
 
     return null;
