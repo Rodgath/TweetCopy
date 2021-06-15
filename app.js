@@ -73,8 +73,16 @@ const getClosest = (elem, selector) => {
 };
 
 
-/* Multiple tweet statuses */
-const tweetArticles = () => {}
+/* Manage multiple tweet statuses */
+const tweetArticles = () => {
 
-/* Single tweet status */
+    const downloadBtn = () => {}
+
+    const appendDownloadBtn = () => {}
+
+    const getTweets = () => {}
+
+}
+
+/* Manage single tweet status */
 const tweetArticle = () => {}
