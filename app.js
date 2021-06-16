@@ -1,12 +1,15 @@
 
-/* 
-Copies a string to the clipboard. Must be called from within an
-event handler such as click. May return false if it failed, but
-this is not always possible. Browser support for Chrome 43+,
-Firefox 42+, Safari 10+, Edge and Internet Explorer 10+.
-Internet Explorer: The clipboard feature may be disabled by
-an administrator. By default a prompt is shown the first
-time the clipboard is used (per session).
+/** 
+ * Copies a string to the clipboard. Must be called from within an
+ * event handler such as click. May return false if it failed, but
+ * this is not always possible. Browser support for Chrome 43+,
+ * Firefox 42+, Safari 10+, Edge and Internet Explorer 10+.
+ * Internet Explorer: The clipboard feature may be disabled by
+ * an administrator. By default a prompt is shown the first
+ * time the clipboard is used (per session).
+ * 
+ * @param  {String} text The text to copy to clipboard.
+ * @return {Boolean} Returns `true` if text is copied, else `false`.
  */
 const copyToClipboard = (text) => {
 
@@ -23,12 +26,10 @@ const copyToClipboard = (text) => {
         textarea.select();
         try {
             return document.execCommand("copy");  // Security exception may be thrown by some browsers.
-        } 
-        catch (ex) {
+        } catch (ex) {
             console.warn("Copy to clipboard failed.", ex);
             return false;
-        }
-        finally {
+        } finally {
             document.body.removeChild(textarea);
         }
     }
@@ -91,7 +92,7 @@ const getClosest = (elem, selector) => {
  * Check if it's a mobile device.
  * 
  * @link - http://stackoverflow.com/a/11381730/989439
- * @return {Boolean}  Returns `true` if its a mobile device, `false` if not
+ * @return {Boolean} Returns `true` if its a mobile device, else `false`.
  */
  const mobileCheck = () => {
     var check = false;
