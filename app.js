@@ -106,7 +106,7 @@ const tweetArticles = () => {
 
     const copyBtn = () => {}
 
-    const appendDownloadBtn = () => {}
+    const appendCopyBtn = () => {}
 
     const getTweets = () => {}
 
