@@ -104,7 +104,7 @@ const getClosest = (elem, selector) => {
 /* Manage multiple tweet statuses */
 const tweetArticles = () => {
 
-    const downloadBtn = () => {}
+    const copyBtn = () => {}
 
     const appendDownloadBtn = () => {}
 
