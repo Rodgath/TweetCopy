@@ -172,21 +172,27 @@ const copyBtn = () => {
 }
 
 /**
+ * Append the copy button.
+ * 
+ * @param  {Element} statusWrapper Tweet text wrapper.
+ * @return {Void}
+ */
+const appendCopyBtn = (statusWrapper) => {
+
+    /* If the button ExtensionScriptApis, remove it to re-append later */
+    Array.prototype.forEach.call(statusWrapper.querySelectorAll('.tcbutton'), function(child, i) {
+        child.parentNode.removeChild(child)
+    });
+    
+    statusWrapper.appendChild(copyBtn())
+}
+
+/**
  * Manage multiple tweet statuses and append the copy button.
  * 
  * @return {Element}  Returns copy button element.
  */
 const tweetArticles = () => {
-    
-    const appendCopyBtn = (statusWrapper) => {
-
-        /* If the button ExtensionScriptApis, remove it to re-append later */
-        Array.prototype.forEach.call(statusWrapper.querySelectorAll('.tcbutton'), function(child, i) {
-            child.parentNode.removeChild(child)
-		});
-        
-        statusWrapper.appendChild(copyBtn())
-    }
     
     const getStatus = (article) => {
         
@@ -212,14 +218,6 @@ const tweetArticles = () => {
  */
 const tweetArticle = () => {
     
-    const appendCopyBtn = (statusWrapper) => {
-        Array.prototype.forEach.call(statusWrapper.querySelectorAll('.tcbutton'), function(child, i) {
-            child.parentNode.removeChild(child)
-		});
-        
-        statusWrapper.appendChild(copyBtn())
-    }
-
     const getStatus = (article) => {
         
         const _tier1 = article.getElementsByTagName('div')[2];
