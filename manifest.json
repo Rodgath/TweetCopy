@@ -12,8 +12,9 @@
 
     "content_scripts": [
         {
-        "matches": ["*://*.twitter.com/*", "*://localhost/*"],
-        "js": ["app.js"]
+            "matches": ["*://*.twitter.com/*", "*://localhost/*"],
+            "js": ["app.js"],
+            "css": ["style.css"]
         }
     ]
     
