@@ -196,12 +196,12 @@ const tweetArticles = () => {
     
     const getStatus = (article) => {
         
-        const _tier1 = article.getElementsByTagName('div')[2];
-        const _tier2 = _tier1.children[1];
-        const _tier3 = _tier2.children[1];
-        const _tier4 = _tier3.children[1];
-        const status = _tier4.getElementsByTagName('span')[0];
-        const statusWrapper = status.parentNode;
+        const _tier1 = article.getElementsByTagName('div')[2],
+              _tier2 = _tier1.children[1],
+              _tier3 = _tier2.children[1],
+              _tier4 = _tier3.children[1],
+              status = _tier4.getElementsByTagName('span')[0],
+              statusWrapper = status.parentNode;
         
         appendCopyBtn(statusWrapper);
         
@@ -220,10 +220,10 @@ const tweetArticle = () => {
     
     const getStatus = (article) => {
         
-        const _tier1 = article.getElementsByTagName('div')[2];
-        const _tier2 = _tier1.children[2];
-        const status = _tier2.getElementsByTagName('span')[0];
-        const statusWrapper = status.parentNode;
+        const _tier1 = article.getElementsByTagName('div')[2],
+              _tier2 = _tier1.children[2],
+              status = _tier2.getElementsByTagName('span')[0],
+              statusWrapper = status.parentNode;
         
         appendCopyBtn(statusWrapper);
 
