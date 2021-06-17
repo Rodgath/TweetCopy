@@ -220,10 +220,13 @@ const tweetArticle = () => {
     
     const getStatus = (article) => {
         
-        const _tier1 = article.getElementsByTagName('div')[2],
-              _tier2 = _tier1.children[2],
-              status = _tier2.getElementsByTagName('span')[0],
-              statusWrapper = status.parentNode;
+        let statusWrapper = '';
+
+        /* status tweet */
+        statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
+
+        /* replay tweet */
+        statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
         
         appendCopyBtn(statusWrapper);
 
