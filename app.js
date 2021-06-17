@@ -106,7 +106,7 @@ const copyBtn = () => {
     const el = document.createElement('button');
 
     el.classList.add('tcbutton', 'tcbutton-effect-morph');
-    
+
     el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-content-copy" width="18" height="24" viewBox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" /></svg>`
     
     eventType = mobileCheck() ? 'touchstart' : 'click';
@@ -124,8 +124,21 @@ const tweetArticles = () => {
 
     const appendCopyBtn = () => {}
 
-    const getStatus = () => {}
+    const getStatus = (article) => {
+        
+        const _tier1 = article.getElementsByTagName('div')[2];
+        const _tier2 = _tier1.children[1];
+        const _tier3 = _tier2.children[1];
+        const _tier4 = _tier3.children[1];
+        const status = _tier4.getElementsByTagName('span')[0];
+        const statusWrapper = status.parentNode;
+        
+        appendCopyBtn(statusWrapper);
+        article.dataset.has_copier = true;
+                    
+    }
 
+    return { getStatus };
 }
 
 /* Manage single tweet status */
