@@ -148,7 +148,23 @@ const tweetArticles = () => {
 }
 
 /* Manage single tweet status */
-const tweetArticle = () => {}
+const tweetArticle = () => {
+    
+    const getStatus = (article) => {
+        
+        const _tier1 = article.getElementsByTagName('div')[2];
+        const _tier2 = _tier1.children[2];
+        const status = _tier2.getElementsByTagName('span')[0];
+        const statusWrapper = status.parentNode;
+        console.log(statusWrapper)
+
+        appendCopyBtn(statusWrapper);
+        article.dataset.has_copier = true;
+                    
+    }
+
+    return { getStatus };
+}
 
 
 document.addEventListener('mouseover', function(e) {
