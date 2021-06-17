@@ -101,11 +101,11 @@ const getClosest = (elem, selector) => {
 }
 
 
+const copyBtn = () => {}
+
 
 /* Manage multiple tweet statuses */
 const tweetArticles = () => {
-
-    const copyBtn = () => {}
 
     const appendCopyBtn = () => {}
 
