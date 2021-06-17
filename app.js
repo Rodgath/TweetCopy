@@ -213,31 +213,6 @@ const tweetArticles = () => {
 }
 
 /**
- * Manage single tweet status and append the copy button.
- * 
- * @return {Element}  Returns copy button element.
- */
-const tweetArticle = () => {
-    
-    const getStatus = (article) => {
-        
-        let statusWrapper = '';
-
-        /* main tweets */
-        statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
-
-        /* reply tweets */
-        statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
-        
-        appendCopyBtn(statusWrapper);
-
-        article.dataset.has_copier = true;
-    }
-
-    return { getStatus };
-}
-
-/**
  * Listen to mouse event over the tweet statuses.
  */
 document.addEventListener('mouseover', function(e) {
@@ -246,11 +221,6 @@ document.addEventListener('mouseover', function(e) {
     const tweet = getClosest(t, 'article[role="article"]');
     
     if (!tweet.dataset.has_copier) {
-        const re = /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/;
-        if (re.test(window.location.href)) {
-            tweetArticle().getStatus(tweet);
-        } else {
-            tweetArticles().getStatus(tweet);
-        }
+        tweetArticles().getStatus(tweet);
     }
 });
