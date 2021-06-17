@@ -115,3 +115,19 @@ const tweetArticles = () => {
 
 /* Manage single tweet status */
 const tweetArticle = () => {}
+
+
+document.addEventListener('mouseover', function(e) {
+    
+    const t = e.target;
+    const tweet = getClosest(t, 'article[role="article"]');
+    
+    if (!tweet.dataset.has_copier) {
+        const re = /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/;
+        if (re.test(window.location.href)) {
+            tweetArticle().getStatus(tweet);
+        } else {
+            tweetArticles().getStatus(tweet);
+        }
+    }
+});
