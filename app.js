@@ -121,9 +121,15 @@ const copyBtn = () => {
 
 /* Manage multiple tweet statuses */
 const tweetArticles = () => {
-
-    const appendCopyBtn = () => {}
-
+    
+    const appendCopyBtn = (statusWrapper) => {
+        Array.prototype.forEach.call(statusWrapper.querySelectorAll('.tcbutton'), function(child, i) {
+            child.parentNode.removeChild(child)
+		});
+        
+        statusWrapper.appendChild(copyBtn())
+    }
+    
     const getStatus = (article) => {
         
         const _tier1 = article.getElementsByTagName('div')[2];
@@ -135,7 +141,7 @@ const tweetArticles = () => {
         
         appendCopyBtn(statusWrapper);
         article.dataset.has_copier = true;
-                    
+
     }
 
     return { getStatus };
