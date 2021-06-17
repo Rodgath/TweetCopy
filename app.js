@@ -100,6 +100,54 @@ const getClosest = (elem, selector) => {
     return check;
 }
 
+/**
+ * Event listener callback
+ * 
+ * @param  {Object} e Event object
+ * @return {NULL} Returns null
+ */
+const listener = (e) => {
+    
+    let targetElement = e.target;
+
+    switch(e.type) {
+
+        case 'click':
+            
+            e.stopPropagation();
+            
+            /* incase a button child element is clicked */
+            if(e.target !== e.currentTarget) {
+                targetElement = e.currentTarget;
+            };
+
+            const siblings = getSiblings(targetElement);
+
+            let outputContent = '';
+
+            siblings.forEach((sibling, i) => {
+                if (sibling.tagName !== 'SPAN') return;
+
+                outputContent += sibling.innerText;
+            });
+            
+            var result = copyToClipboard(outputContent);
+
+            if (result) {
+                targetElement.classList.add('tcbutton-click');
+                targetElement.style.fill = 'rgb(23, 191, 99)';
+                targetElement.style.backgroundColor = 'rgba(23,191,99,.1)';
+            }
+            
+            console.log("copied?", result);
+            break;
+
+        case 'animationend':
+            targetElement.classList.remove('tcbutton-click');
+            break;
+    }
+}
+
 
 const copyBtn = () => {
     
