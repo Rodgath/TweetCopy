@@ -109,7 +109,7 @@ const tweetArticles = () => {
 
     const appendCopyBtn = () => {}
 
-    const getTweets = () => {}
+    const getStatus = () => {}
 
 }
 
