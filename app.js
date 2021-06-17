@@ -27,7 +27,7 @@ const copyToClipboard = (text) => {
         try {
             return document.execCommand("copy");  // Security exception may be thrown by some browsers.
         } catch (ex) {
-            console.warn("Copy to clipboard failed.", ex);
+            // console.warn("Copy to clipboard failed.", ex);
             return false;
         } finally {
             document.body.removeChild(textarea);
@@ -139,7 +139,7 @@ const listener = (e) => {
                 targetElement.style.backgroundColor = 'rgba(23,191,99,.1)';
             }
             
-            console.log("copied?", result);
+            // console.log("copied?", result);
             break;
 
         case 'animationend':
@@ -212,8 +212,7 @@ const tweetArticle = () => {
         const _tier2 = _tier1.children[2];
         const status = _tier2.getElementsByTagName('span')[0];
         const statusWrapper = status.parentNode;
-        console.log(statusWrapper)
-
+        
         appendCopyBtn(statusWrapper);
         article.dataset.has_copier = true;
                     
