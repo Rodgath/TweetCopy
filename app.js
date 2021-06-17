@@ -114,6 +114,7 @@ const listener = (e) => {
 
         case 'click':
             
+            /* Don't click the tweet */
             e.stopPropagation();
             
             /* incase a button child element is clicked */
@@ -148,7 +149,11 @@ const listener = (e) => {
     }
 }
 
-
+/**
+ * Build the copy button.
+ * 
+ * @return {Element}  Returns the button element.
+ */
 const copyBtn = () => {
     
     const el = document.createElement('button');
@@ -166,11 +171,16 @@ const copyBtn = () => {
     return el;
 }
 
-
-/* Manage multiple tweet statuses */
+/**
+ * Manage multiple tweet statuses and append the copy button.
+ * 
+ * @return {Element}  Returns copy button element.
+ */
 const tweetArticles = () => {
     
     const appendCopyBtn = (statusWrapper) => {
+
+        /* If the button ExtensionScriptApis, remove it to re-append later */
         Array.prototype.forEach.call(statusWrapper.querySelectorAll('.tcbutton'), function(child, i) {
             child.parentNode.removeChild(child)
 		});
@@ -188,14 +198,18 @@ const tweetArticles = () => {
         const statusWrapper = status.parentNode;
         
         appendCopyBtn(statusWrapper);
+        
         article.dataset.has_copier = true;
-
     }
 
     return { getStatus };
 }
 
-/* Manage single tweet status */
+/**
+ * Manage single tweet status and append the copy button.
+ * 
+ * @return {Element}  Returns copy button element.
+ */
 const tweetArticle = () => {
     
     const appendCopyBtn = (statusWrapper) => {
@@ -214,14 +228,16 @@ const tweetArticle = () => {
         const statusWrapper = status.parentNode;
         
         appendCopyBtn(statusWrapper);
+
         article.dataset.has_copier = true;
-                    
     }
 
     return { getStatus };
 }
 
-
+/**
+ * Listen to mouse event over the tweet statuses.
+ */
 document.addEventListener('mouseover', function(e) {
     
     const t = e.target;
