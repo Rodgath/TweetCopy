@@ -150,6 +150,14 @@ const tweetArticles = () => {
 /* Manage single tweet status */
 const tweetArticle = () => {
     
+    const appendCopyBtn = (statusWrapper) => {
+        Array.prototype.forEach.call(statusWrapper.querySelectorAll('.tcbutton'), function(child, i) {
+            child.parentNode.removeChild(child)
+		});
+        
+        statusWrapper.appendChild(copyBtn())
+    }
+
     const getStatus = (article) => {
         
         const _tier1 = article.getElementsByTagName('div')[2];
