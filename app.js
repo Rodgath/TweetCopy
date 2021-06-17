@@ -101,7 +101,22 @@ const getClosest = (elem, selector) => {
 }
 
 
-const copyBtn = () => {}
+const copyBtn = () => {
+    
+    const el = document.createElement('button');
+
+    el.classList.add('tcbutton', 'tcbutton-effect-morph');
+    
+    el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-content-copy" width="18" height="24" viewBox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" /></svg>`
+    
+    eventType = mobileCheck() ? 'touchstart' : 'click';
+    
+    el.addEventListener(eventType, listener);
+
+    el.addEventListener("animationend", listener);
+
+    return el;
+}
 
 
 /* Manage multiple tweet statuses */
