@@ -195,13 +195,14 @@ const appendCopyBtn = (statusWrapper) => {
 const tweetArticles = () => {
     
     const getStatus = (article) => {
+
+        /* main tweets */
+        statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
+
+        /* reply tweets */
+        statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
         
-        const _tier1 = article.getElementsByTagName('div')[2],
-              _tier2 = _tier1.children[1],
-              _tier3 = _tier2.children[1],
-              _tier4 = _tier3.children[1],
-              status = _tier4.getElementsByTagName('span')[0],
-              statusWrapper = status.parentNode;
+        appendCopyBtn(statusWrapper);
         
         appendCopyBtn(statusWrapper);
         
@@ -222,10 +223,10 @@ const tweetArticle = () => {
         
         let statusWrapper = '';
 
-        /* status tweet */
+        /* main tweets */
         statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
 
-        /* replay tweet */
+        /* reply tweets */
         statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
         
         appendCopyBtn(statusWrapper);
