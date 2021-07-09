@@ -1,0 +1,3 @@
+
+# ignore everything in web-ext directory
+web-ext-artifacts/*
