@@ -1,3 +1,20 @@
+/**
+ * TweetCopy
+ * 
+ * @name        TweetCopy
+ * @description Copy tweet text by clicking a button. Simple.
+ * @link        https://rodgath.com/TweetCopy
+ * @author      Rodgath
+ * @authorLink  https://rodgath.com
+ * @version     1.0.1
+ * @created     Jul 09, 2021
+ * @updated     Aug 14, 2021
+ * @copyright   Copyright (C) 2021, Rodgath
+ * @license     Dual licensed under the MIT and GPL licenses
+ * @licenseMIT  http://www.opensource.org/licenses/mit-license.php
+ * @licenseGPL  http://www.opensource.org/licenses/gpl-3.0.html
+ *      
+ */
 
 /** 
  * Copies a string to the clipboard. Must be called from within an
