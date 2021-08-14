@@ -197,7 +197,7 @@ const tweetArticles = () => {
     const getStatus = (article) => {
 
         /* main tweets */
-        statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
+        statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
 
         /* reply tweets */
         statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-1qd0xha.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
