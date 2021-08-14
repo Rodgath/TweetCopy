@@ -139,7 +139,8 @@ const tweetArticles = () => {
                     outputContent += sibling.innerText;
                 });
                 
-                var result = copyToClipboard(outputContent);
+                
+                const result = copyToClipboard(outputContent);
     
                 if (result) {
                     targetElement.classList.add('tcbutton-click');
@@ -155,7 +156,7 @@ const tweetArticles = () => {
                 break;
         }
     }
-
+    
     /**
      * Build the copy button.
      * 
