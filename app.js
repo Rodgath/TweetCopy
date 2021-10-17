@@ -262,8 +262,6 @@ const tweetArticles = () => {
 
         appendCopyBtn(tweetStatusWrapper);
         
-        appendCopyBtn(tweetStatusWrapper);
-        
         article.dataset.has_copier = true;
     }
 
