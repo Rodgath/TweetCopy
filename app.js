@@ -230,9 +230,21 @@ const tweetArticles = () => {
     
     const getStatus = (article) => {
         
-        /* main tweets */
-        statusWrapper = article.querySelector('.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
+        /**
+         * Main tweets
+         */
+        let tweetStatusWrapper = '';
 
+        /* Default display */
+        swDefaultDisplay = article.querySelector('.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
+
+        /* Dim display */
+        swDimDisplay     = article.querySelector('.css-901oao.r-jwli3a.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
+        swDimDisplay2    = article.querySelector('.css-901oao.r-jwli3a.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
+
+        /* Lights out display */
+        swDarkDisplay    = article.querySelector('.css-901oao.r-1fmj7o5.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
+        swDarkDisplay2   = article.querySelector('.css-901oao.r-1fmj7o5.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
         /* reply tweets */
         statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
         
