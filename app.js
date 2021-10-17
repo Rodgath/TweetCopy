@@ -157,9 +157,7 @@ const tweetArticles = () => {
                     outputContent += sibling.innerText;
                 });
                 
-                const closestParentMainTweet = getClosest(targetElement, '.css-1dbjc4n.r-18u37iz');
-                const closestParentReplyTweet = getClosest(targetElement, '.css-1dbjc4n.r-1s2bzr4');
-                const closestParent = closestParentReplyTweet ? closestParentReplyTweet : closestParentMainTweet;
+                const closestParent = getClosest(targetElement, '.css-1dbjc4n.r-16y2uox.r-1wbh5a2.r-1ny4l3l');
                 
                 const authorHandleDefault = closestParent.querySelector('.css-901oao.css-bfa6kz.r-14j79pv.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
                 const authorHandleDim = closestParent.querySelector('.css-901oao.css-bfa6kz.r-111h2gw.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
