@@ -245,8 +245,19 @@ const tweetArticles = () => {
         /* Lights out display */
         swDarkDisplay    = article.querySelector('.css-901oao.r-1fmj7o5.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
         swDarkDisplay2   = article.querySelector('.css-901oao.r-1fmj7o5.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
-        /* reply tweets */
-        statusWrapper = statusWrapper ? statusWrapper : article.querySelector('.css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
+        
+        if (swDefaultDisplay) {
+            tweetStatusWrapper = swDefaultDisplay;
+        } else if (swDimDisplay) {
+            tweetStatusWrapper = swDimDisplay;
+        } else if (swDimDisplay2) {
+            tweetStatusWrapper = swDimDisplay2;
+        } else if (swDarkDisplay) {
+            tweetStatusWrapper = swDarkDisplay;
+        } else if (swDarkDisplay2) {
+            tweetStatusWrapper = swDarkDisplay2;
+        }
+
         
         appendCopyBtn(statusWrapper);
         
