@@ -157,8 +157,10 @@ const tweetArticles = () => {
                     outputContent += sibling.innerText;
                 });
                 
-                const closestParent = getClosest(targetElement, '.css-1dbjc4n.r-16y2uox.r-1wbh5a2.r-1ny4l3l');
-                // const authorName = closestParent.querySelector('.css-901oao.css-bfa6kz.r-1awozwy.r-18jsvk2.r-6koalj.r-37j5jr.r-a023e6.r-b88u0q.r-rjixqe.r-bcqeeo.r-1udh08x.r-3s2u2q.r-qvutc0 > span').innerText;
+                const closestParentMainTweet = getClosest(targetElement, '.css-1dbjc4n.r-18u37iz');
+                const closestParentReplyTweet = getClosest(targetElement, '.css-1dbjc4n.r-1s2bzr4');
+                const closestParent = closestParentReplyTweet ? closestParentReplyTweet : closestParentMainTweet;
+                
                 const authorHandleDefault = closestParent.querySelector('.css-901oao.css-bfa6kz.r-14j79pv.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
                 const authorHandleDim = closestParent.querySelector('.css-901oao.css-bfa6kz.r-111h2gw.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
                 const authorHandleDark = closestParent.querySelector('.css-901oao.css-bfa6kz.r-9ilb82.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
