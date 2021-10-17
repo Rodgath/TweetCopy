@@ -260,39 +260,9 @@ const tweetArticles = () => {
             tweetStatusWrapper = swDarkDisplay2;
         }
 
-        /**
-         * Reply tweets
-         */
-        let replyStatusWrapper = '';
-        let isReplyTweet = false;
+        appendCopyBtn(tweetStatusWrapper);
         
-        /* Default display */
-        rswDefaultDisplay = article.querySelector('.css-901oao.r-18jsvk2.r-37j5jr.r-1blvdjr.r-16dba41.r-vrz42v.r-bcqeeo.r-bnwqim.r-qvutc0');
-
-        /* Dim display */
-        rswDimDisplay     = article.querySelector('.css-901oao.r-jwli3a.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-14gqq1x.r-bcqeeo.r-bnwqim.r-qvutc0');
-
-        // css-901oao r-jwli3a r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-14gqq1x r-bcqeeo r-bnwqim r-qvutc0
-
-        /* Lights out display */
-        rswDarkDisplay    = article.querySelector('.css-901oao.r-1fmj7o5.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0');
-        
-        if (rswDefaultDisplay) {
-            replyStatusWrapper = rswDefaultDisplay;
-            isReplyTweet = true;
-        } else if (rswDimDisplay) {
-            replyStatusWrapper = rswDimDisplay;
-            isReplyTweet = true;
-        } else if (rswDarkDisplay) {
-            replyStatusWrapper = rswDarkDisplay;
-            isReplyTweet = true;
-        }
-        
-        statusWrapper = isReplyTweet ? replyStatusWrapper : statusWrapper;
-        
-        appendCopyBtn(statusWrapper);
-        
-        appendCopyBtn(statusWrapper);
+        appendCopyBtn(tweetStatusWrapper);
         
         article.dataset.has_copier = true;
     }
