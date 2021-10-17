@@ -286,6 +286,7 @@ const tweetArticles = () => {
             isReplyTweet = true;
         }
         
+        statusWrapper = isReplyTweet ? replyStatusWrapper : statusWrapper;
         
         appendCopyBtn(statusWrapper);
         
