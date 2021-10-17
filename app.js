@@ -163,6 +163,13 @@ const tweetArticles = () => {
                 const authorHandleDim = closestParent.querySelector('.css-901oao.css-bfa6kz.r-111h2gw.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
                 const authorHandleDark = closestParent.querySelector('.css-901oao.css-bfa6kz.r-9ilb82.r-18u37iz.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0 > span');
 
+                if (authorHandleDefault) {
+                    authorHandle = authorHandleDefault.innerText;
+                } else if (authorHandleDim) {
+                    authorHandle = authorHandleDim.innerText;
+                } else if (authorHandleDark) {
+                    authorHandle = authorHandleDark.innerText;
+                }
 
                 outputContent += ` — ${authorHandle}`; 
                 
