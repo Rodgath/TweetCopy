@@ -6,7 +6,7 @@
  * @link        https://rodgath.com/TweetCopy
  * @author      Rodgath
  * @authorLink  https://rodgath.com
- * @version     1.0.2
+ * @version     1.0.3
  * @created     Jul 09, 2021
  * @updated     May 28, 2022
  * @copyright   Copyright (C) 2022, Rodgath
