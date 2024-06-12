@@ -1,6 +1,8 @@
 .tcbutton {
 	position: relative;
-	display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 	margin: 0;
 	border: none;
 	color: rgb(91, 112, 131);
