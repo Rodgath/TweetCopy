@@ -154,9 +154,14 @@ const tweetArticles = () => {
         let authorHandle = '';
 
         siblings.forEach((sibling, i) => {
-          if (sibling.tagName !== 'SPAN') return;
 
-          outputContent += sibling.innerText;
+          if (sibling.tagName !== 'SPAN' && sibling.tagName !== 'IMG') return;
+
+          if (sibling.tagName === 'SPAN') {
+            outputContent += sibling.innerText;
+          } else if (sibling.tagName === 'IMG' && sibling.alt) {
+            outputContent += sibling.alt; // Handle IMG elements (emojis)
+          }
         });
 
         const mainTweet = getClosest(targetElement, 'article');
@@ -173,7 +178,6 @@ const tweetArticles = () => {
           targetElement.style.backgroundColor = 'rgba(23,191,99,.1)';
         }
 
-        // console.log("copied?", result);
         break;
 
       case 'animationend':
