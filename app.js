@@ -178,7 +178,7 @@ const tweetArticles = () => {
 
         authorHandle = mainTweet.querySelector('a[tabindex="-1"] span').innerText;
 
-        outputContent += ` — ${authorHandle}`;
+        outputContent += `\n\n— ${authorHandle}`;
 
         const result = copyToClipboard(outputContent);
 
