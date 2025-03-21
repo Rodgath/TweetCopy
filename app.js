@@ -28,26 +28,36 @@
  * @param  {String} text The text to copy to clipboard.
  * @return {Boolean} Returns `true` if text is copied, else `false`.
  */
-const copyToClipboard = (text) => {
+const copyToClipboard = async (text) => {
+  try {
+    // Use the modern Clipboard API
+    await navigator.clipboard.writeText(text);
+    return true; // Success
+  } catch (err) {
+    // Fallback to the deprecated method if Clipboard API is not supported
+    console.warn("Clipboard API not supported, falling back to execCommand.");
 
-  if (window.clipboardData && window.clipboardData.setData) {
-    // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
-    return window.clipboardData.setData("Text", text);
-
-  } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-
-    var textarea = document.createElement("textarea");
-    textarea.textContent = text;
-    textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      return document.execCommand("copy"); // Security exception may be thrown by some browsers.
-    } catch (ex) {
-      // console.warn("Copy to clipboard failed.", ex);
+    if (window.clipboardData && window.clipboardData.setData) {
+      // Internet Explorer-specific code path
+      return window.clipboardData.setData("Text", text);
+    } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+      // Legacy method using execCommand
+      const textarea = document.createElement("textarea");
+      textarea.textContent = text;
+      textarea.style.position = "fixed"; // Prevent scrolling to bottom of page
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        return document.execCommand("copy"); // Security exception may be thrown
+      } catch (ex) {
+        console.warn("Copy to clipboard failed.", ex);
+        return false;
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    } else {
+      console.warn("Clipboard API and fallback methods are not supported.");
       return false;
-    } finally {
-      document.body.removeChild(textarea);
     }
   }
 }
