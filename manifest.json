@@ -10,7 +10,7 @@
 
     "author": "@Rodgath",
 
-    "version": "1.0.4",
+    "version": "1.0.5",
 
     "icons": {
         "16": "images/16.png",
@@ -40,5 +40,5 @@
     "permissions": [
         "tabs"
     ]
-    
+
 }

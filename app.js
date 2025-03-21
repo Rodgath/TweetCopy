@@ -6,9 +6,9 @@
  * @link        https://rodgath.com/TweetCopy
  * @author      Rodgath
  * @authorLink  https://rodgath.com
- * @version     1.0.4
+ * @version     1.0.5
  * @created     Jul 09, 2021
- * @updated     Jun 12, 2024
+ * @updated     Mar 20, 2025
  * @copyright   Copyright (C) 2022, Rodgath
  * @license     Dual licensed under the MIT and GPL licenses
  * @licenseMIT  http://www.opensource.org/licenses/mit-license.php
