@@ -3,9 +3,9 @@
  *
  * @name        TweetCopy
  * @description Copy tweet text by clicking a button. Simple.
- * @link        https://rodgath.com/TweetCopy
+ * @link        https://github.com/rodgath/TweetCopy
  * @author      Rodgath
- * @authorLink  https://rodgath.com
+ * @authorLink  https://github.com/rodgath
  * @version     1.0.5
  * @created     Jul 09, 2021
  * @updated     Mar 20, 2025
