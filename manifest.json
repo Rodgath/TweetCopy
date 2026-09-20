@@ -1,44 +1,34 @@
 {
-
-    "manifest_version": 2,
-
-    "name": "Tweet Copy",
-
-    "short_name": "TweetCopy",
-
-    "description": "Copy tweet text with the click of a button and paste it elsewhere.",
-
-    "author": "@Rodgath",
-
-    "version": "1.0.5",
-
-    "icons": {
-        "16": "images/16.png",
-        "24": "images/24.png",
-        "32": "images/32.png",
-        "48": "images/48.png",
-        "64": "images/64.png",
-        "96": "images/96.png",
-        "128": "images/128.png"
-    },
-
-    "content_scripts": [
-        {
-            "matches": [
-                "*://*.twitter.com/*",
-                "*://*.x.com/*"
-            ],
-            "js": [
-                "app.js"
-            ],
-            "css": [
-                "style.css"
-            ]
-        }
-    ],
-
-    "permissions": [
-        "tabs"
-    ]
-
+  "manifest_version": 2,
+  "name": "Tweet Copy",
+  "short_name": "TweetCopy",
+  "description": "Copy tweet text with the click of a button and paste it elsewhere.",
+  "author": "@Rodgath",
+  "version": "1.0.5",
+  "icons": {
+    "16": "images/16.png",
+    "24": "images/24.png",
+    "32": "images/32.png",
+    "48": "images/48.png",
+    "64": "images/64.png",
+    "96": "images/96.png",
+    "128": "images/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.twitter.com/*",
+        "*://*.x.com/*"
+      ],
+      "js": [
+        "app.js"
+      ],
+      "css": [
+        "style.css"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ]
 }
