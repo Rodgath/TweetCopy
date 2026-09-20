@@ -130,6 +130,76 @@ const mobileCheck = () => {
 }
 
 /**
+ * Max image size to request from Twitter's image CDN.
+ * One of: 'small', 'medium', 'large', 'orig'. Set to null to keep the URL as-is.
+ */
+const IMAGE_SIZE = 'large';
+
+/**
+ * Escape a string for safe use inside an HTML attribute value.
+ *
+ * @param  {String} str The raw string
+ * @return {String}     The escaped string
+ */
+const escapeAttr = (str) => {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+};
+
+/**
+ * Build an `<a>` tag string from an anchor element in the tweet text.
+ * Uses the href as-is (the t.co short link, or absolute URL for mentions/hashtags).
+ * The link text has the hidden "http://" prefix and the trailing ellipsis removed.
+ *
+ * @param  {Element} anchor The anchor element
+ * @return {String}         e.g. <a href="https://t.co/xxx">example.com</a>
+ */
+const anchorToHtml = (anchor) => {
+  const text = anchor.textContent
+    .replace(/^\s*https?:\/\//i, '')
+    .replace(/\u2026\s*$/, '')
+    .trim();
+
+  if (!anchor.href) return text;
+
+  return `<a href="${escapeAttr(anchor.href)}">${text}</a>`;
+};
+
+/**
+ * Get the image URLs attached to a tweet (photos and video thumbnails).
+ * Skips avatars and images inside a quoted tweet.
+ *
+ * @param  {Element} article The tweet article element
+ * @return {Array}           Array of image URLs
+ */
+const getTweetImages = (article) => {
+  const urls = [];
+
+  article.querySelectorAll('[data-testid="tweetPhoto"] img').forEach((img) => {
+    /* Skip media that belongs to a quoted tweet */
+    if (img.closest('div[role="link"]')) return;
+    if (!img.src) return;
+
+    let src = img.src;
+
+    try {
+      const url = new URL(src);
+      if (IMAGE_SIZE && url.searchParams.has('name')) {
+        url.searchParams.set('name', IMAGE_SIZE);
+      }
+      src = url.toString();
+    } catch (e) { /* keep original src */ }
+
+    if (!urls.includes(src)) urls.push(src);
+  });
+
+  return urls;
+};
+
+/**
  * Manage multiple tweet statuses and append the copy button.
  *
  * @return {Element}  Returns copy button element.
@@ -142,7 +212,7 @@ const tweetArticles = () => {
    * @param  {Object} e Event object
    * @return {NULL} Returns null
    */
-  const listener = (e) => {
+  const listener = async (e) => {
 
     let targetElement = e.target;
 
@@ -165,22 +235,28 @@ const tweetArticles = () => {
 
         siblings.forEach((sibling, i) => {
 
-          if (sibling.tagName !== 'SPAN' && sibling.tagName !== 'IMG') return;
-
           if (sibling.tagName === 'SPAN') {
             outputContent += sibling.innerText;
           } else if (sibling.tagName === 'IMG' && sibling.alt) {
             outputContent += sibling.alt; // Handle IMG elements (emojis)
+          } else if (sibling.tagName === 'A') {
+            outputContent += anchorToHtml(sibling); // Links, mentions, hashtags
           }
         });
 
         const mainTweet = getClosest(targetElement, 'article');
 
+        /* Append tweet images, if any */
+        const images = getTweetImages(mainTweet);
+        if (images.length) {
+          outputContent += '\n\n' + images.map((src) => `<img src="${escapeAttr(src)}" />`).join('\n');
+        }
+
         authorHandle = mainTweet.querySelector('a[tabindex="-1"] span').innerText;
 
         outputContent += `\n\n— ${authorHandle}`;
 
-        const result = copyToClipboard(outputContent);
+        const result = await copyToClipboard(outputContent);
 
         if (result) {
           targetElement.classList.add('tcbutton-click');
