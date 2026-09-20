@@ -151,13 +151,18 @@ const escapeAttr = (str) => {
 
 /**
  * Build an `<a>` tag string from an anchor element in the tweet text.
- * Uses the href as-is (the t.co short link, or absolute URL for mentions/hashtags).
+ * Uses the href as-is (the t.co short link, or absolute URL for hashtags).
+ * @handles are returned as plain text with no link.
  * The link text has the hidden "http://" prefix and the trailing ellipsis removed.
  *
  * @param  {Element} anchor The anchor element
  * @return {String}         e.g. <a href="https://t.co/xxx">example.com</a>
  */
 const anchorToHtml = (anchor) => {
+  /* @handles are copied as plain text, without the link */
+  const rawText = anchor.textContent.trim();
+  if (/^@\w+$/.test(rawText)) return rawText;
+
   const text = anchor.textContent
     .replace(/^\s*https?:\/\//i, '')
     .replace(/\u2026\s*$/, '')
@@ -200,6 +205,32 @@ const getTweetImages = (article) => {
 };
 
 /**
+ * Convert a node from the tweet text into the output string.
+ * Recurses into wrapper elements (e.g. the <div><span><a> that Twitter uses
+ * around @mentions) so nested links and emojis aren't skipped.
+ *
+ * @param  {Node}   node The node to convert
+ * @return {String}      The text/HTML for this node
+ */
+const nodeToOutput = (node) => {
+  if (node.nodeType === 3) return node.textContent; // Text node
+  if (node.nodeType !== 1) return '';
+
+  switch (node.tagName) {
+    case 'BUTTON': return '';                    // Our own copy button
+    case 'IMG':    return node.alt || '';        // Emojis
+    case 'A':      return anchorToHtml(node);    // Links, @handles, hashtags
+  }
+
+  /* Wrapper with links/emojis inside: walk its children */
+  if (node.querySelector('a, img')) {
+    return Array.from(node.childNodes).map(nodeToOutput).join('');
+  }
+
+  return node.innerText || node.textContent || '';
+};
+
+/**
  * Manage multiple tweet statuses and append the copy button.
  *
  * @return {Element}  Returns copy button element.
@@ -233,15 +264,8 @@ const tweetArticles = () => {
         let outputContent = '';
         let authorHandle = '';
 
-        siblings.forEach((sibling, i) => {
-
-          if (sibling.tagName === 'SPAN') {
-            outputContent += sibling.innerText;
-          } else if (sibling.tagName === 'IMG' && sibling.alt) {
-            outputContent += sibling.alt; // Handle IMG elements (emojis)
-          } else if (sibling.tagName === 'A') {
-            outputContent += anchorToHtml(sibling); // Links, mentions, hashtags
-          }
+        siblings.forEach((sibling) => {
+          outputContent += nodeToOutput(sibling);
         });
 
         const mainTweet = getClosest(targetElement, 'article');
